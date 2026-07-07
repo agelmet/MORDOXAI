@@ -31,10 +31,10 @@ body.locked{overflow:hidden}
 h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.12;letter-spacing:.2px}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
-.lang-en{display:none}
-body.en .lang-el{display:none}
-body.en .lang-en{display:inline}
-body.en .lang-en.block{display:block}
+
+/* Language Toggle Logic - Fixed Specificity */
+body:not(.en) .lang-en { display: none !important; }
+body.en .lang-el { display: none !important; }
 
 /* ---------- PRELOADER ---------- */
 #preloader{position:fixed;inset:0;z-index:9999;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transition:opacity .8s ease,visibility .8s}
@@ -275,12 +275,14 @@ footer{background:var(--ink);color:rgba(255,255,255,.8);padding:70px 5vw 30px}
 </head>
 <body>
 
+<!-- PRELOADER -->
 <div id="preloader">
   <img class="pre-logo" src="https://raw.githubusercontent.com/agelmet/MORDOXAI/refs/heads/main/mordoso.jpg" alt="My Smile Prosthodontics">
   <div class="pre-bar"><span></span></div>
   <div class="pre-txt">My Smile Prosthodontics</div>
 </div>
 
+<!-- HEADER -->
 <header id="header">
   <a href="#hero" class="nav-logo">
     <img src="https://raw.githubusercontent.com/agelmet/MORDOXAI/refs/heads/main/mordoso.jpg" alt="Logo">
@@ -312,6 +314,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.8);padding:70px 5vw 30px}
   </div>
 </header>
 
+<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <button class="mm-close" id="mmClose" aria-label="Close menu"></button>
   <img class="mm-logo" src="https://raw.githubusercontent.com/agelmet/MORDOXAI/refs/heads/main/mordoso.jpg" alt="Logo">
@@ -330,6 +333,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.8);padding:70px 5vw 30px}
   </div>
 </div>
 
+<!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-orbs"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
   <div class="hero-inner">
@@ -352,6 +356,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.8);padding:70px 5vw 30px}
   <div class="scroll-ind"><div class="mouse"></div><span class="lang-el">Scroll</span><span class="lang-en">Scroll</span></div>
 </section>
 
+<!-- STRIP -->
 <div class="strip">
   <div class="strip-track el-track">
     <div class="strip-content">
@@ -375,6 +380,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.8);padding:70px 5vw 30px}
   </div>
 </div>
 
+<!-- ABOUT -->
 <section class="pad" id="about">
   <div class="container about-grid">
     <div class="about-img-wrap reveal">
@@ -409,6 +415,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.8);padding:70px 5vw 30px}
   </div>
 </section>
 
+<!-- SERVICES -->
 <section class="pad serv-bg" id="services">
   <div class="container">
     <div class="sec-head reveal">
@@ -451,6 +458,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.8);padding:70px 5vw 30px}
   </div>
 </section>
 
+<!-- PHILOSOPHY -->
 <section class="pad phil" id="philosophy">
   <div class="container">
     <div class="sec-head reveal">
@@ -485,6 +493,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.8);padding:70px 5vw 30px}
   </div>
 </section>
 
+<!-- REVIEWS -->
 <section class="pad rev-bg" id="reviews">
   <div class="container">
     <div class="sec-head reveal">
@@ -549,6 +558,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.8);padding:70px 5vw 30px}
   </div>
 </section>
 
+<!-- CONTACT -->
 <section class="pad" id="contact" style="background:linear-gradient(180deg,#fff 0%,#f4fafb 100%)">
   <div class="container">
     <div class="sec-head reveal">
@@ -582,12 +592,16 @@ footer{background:var(--ink);color:rgba(255,255,255,.8);padding:70px 5vw 30px}
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="foot-grid">
     <div class="foot-brand">
       <div class="foot-logo">
         <img src="https://raw.githubusercontent.com/agelmet/MORDOXAI/refs/heads/main/mordoso.jpg" alt="Logo">
-        <div><b>Dr. Μορδοχάι</b><br><small>My Smile Prosthodontics</small></div>
+        <div>
+          <b><span class="lang-el">Dr. Μορδοχάι</span><span class="lang-en">Dr. Mordohai</span></b><br>
+          <small>My Smile Prosthodontics</small>
+        </div>
       </div>
       <p class="lang-el">Οδοντίατρος Προσθετολόγος με διεθνή εξειδίκευση από το USC. Η αισθητική του Hollywood με ευρωπαϊκή φινέτσα, στη Θεσσαλονίκη.</p>
       <p class="lang-en">Prosthodontist with international training from USC. Hollywood aesthetics with European finesse, in Thessaloniki.</p>
@@ -608,11 +622,12 @@ footer{background:var(--ink);color:rgba(255,255,255,.8);padding:70px 5vw 30px}
     </div>
   </div>
   <div class="foot-bottom">
-    <div>© <span id="year"></span> Dr. Nikitas Mordohai · <span class="lang-el">Με επιφύλαξη παντός δικαιώματος</span><span class="lang-en">All rights reserved</span></div>
+    <div>© <span id="year"></span> <span class="lang-el">Dr. Νικήτας Μορδοχάι</span><span class="lang-en">Dr. Nikitas Mordohai</span> · <span class="lang-el">Με επιφύλαξη παντός δικαιώματος</span><span class="lang-en">All rights reserved</span></div>
     <div class="advon"><span class="lang-el">Σχεδιασμός από</span><span class="lang-en">Designed by</span> <a href="https://www.advonmedia.com" target="_blank" rel="noopener">Advon Media</a></div>
   </div>
 </footer>
 
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <button class="lb-close" id="lbClose">✕</button>
   <img id="lbImg" src="" alt="">
@@ -628,6 +643,7 @@ function setLang(l){
   document.documentElement.lang=l;
   document.querySelectorAll('.flag-el').forEach(f=>f.classList.toggle('active',l==='el'));
   document.querySelectorAll('.flag-en').forEach(f=>f.classList.toggle('active',l==='en'));
+  document.title = l==='en' ? 'Dr. Nikitas Mordohai, DDS — Prosthodontist | Thessaloniki' : 'Dr. Νικήτας Μορδοχάι, DDS — Οδοντίατρος Προσθετολόγος | Θεσσαλονίκη';
 }
 
 // Header scroll
