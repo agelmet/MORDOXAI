@@ -1,0 +1,16 @@
+{
+ "source": {
+  "kind": "file",
+  "ref": "assets/img/mordohai-mark.svg"
+ },
+ "source_md5": "931ec3c0ef320f6a743552f27922ac0c",
+ "version": "de638839",
+ "tile": "#0C1430",
+ "crop": null,
+ "header": [
+  "inline",
+  "index.html",
+  "4306f54b4134e88892c6b0102782993e"
+ ],
+ "made": "2026-10-08"
+}
